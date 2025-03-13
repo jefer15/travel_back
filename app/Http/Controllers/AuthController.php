@@ -58,14 +58,8 @@ class AuthController extends Controller
     }
 
 
-    public function me()
+    public function userLoggued()
     {
         return response()->json(auth()->user());
-    }
-
-    public function logout()
-    {
-        JWTAuth::invalidate(JWTAuth::getToken());
-        return response()->json(['message' => 'Sesión cerrada']);
     }
 }
