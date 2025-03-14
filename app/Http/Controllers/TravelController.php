@@ -106,6 +106,8 @@ class TravelController extends Controller
     public function getHistory()
     {
         $history = History::with(['user:id,name', 'city:id,name,country_id', 'city.country:id,name'])
+            ->latest('created_at')
+            ->take(5)
             ->get()
             ->map(function ($record) {
                 return [
